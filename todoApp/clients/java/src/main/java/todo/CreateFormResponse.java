@@ -13,10 +13,10 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 
 /**
- * The UpdateResponse model.
+ * The CreateFormResponse model.
  */
 @Metadata(conditions = { TypeConditions.IMMUTABLE })
-public final class UpdateResponse implements JsonSerializable<UpdateResponse> {
+public final class CreateFormResponse implements JsonSerializable<CreateFormResponse> {
     /*
      * The item's unique id
      */
@@ -78,13 +78,13 @@ public final class UpdateResponse implements JsonSerializable<UpdateResponse> {
     private BinaryData labels;
 
     /**
-     * Creates an instance of UpdateResponse class.
+     * Creates an instance of CreateFormResponse class.
      * 
      * @param title the title value to set.
      * @param status the status value to set.
      */
     @Metadata(generated = true)
-    private UpdateResponse(String title, TodoItemStatus status) {
+    private CreateFormResponse(String title, TodoItemStatus status) {
         this.title = title;
         this.status = status;
     }
@@ -208,16 +208,16 @@ public final class UpdateResponse implements JsonSerializable<UpdateResponse> {
     }
 
     /**
-     * Reads an instance of UpdateResponse from the JsonReader.
+     * Reads an instance of CreateFormResponse from the JsonReader.
      * 
      * @param jsonReader The JsonReader being read.
-     * @return An instance of UpdateResponse if the JsonReader was pointing to an instance of it, or null if it was
+     * @return An instance of CreateFormResponse if the JsonReader was pointing to an instance of it, or null if it was
      * pointing to JSON null.
      * @throws IllegalStateException If the deserialized JSON object was missing any required properties.
-     * @throws IOException If an error occurs while reading the UpdateResponse.
+     * @throws IOException If an error occurs while reading the CreateFormResponse.
      */
     @Metadata(generated = true)
-    public static UpdateResponse fromJson(JsonReader jsonReader) throws IOException {
+    public static CreateFormResponse fromJson(JsonReader jsonReader) throws IOException {
         return jsonReader.readObject(reader -> {
             long id = 0L;
             String title = null;
@@ -257,17 +257,17 @@ public final class UpdateResponse implements JsonSerializable<UpdateResponse> {
                     reader.skipChildren();
                 }
             }
-            UpdateResponse deserializedUpdateResponse = new UpdateResponse(title, status);
-            deserializedUpdateResponse.id = id;
-            deserializedUpdateResponse.createdBy = createdBy;
-            deserializedUpdateResponse.createdAt = createdAt;
-            deserializedUpdateResponse.updatedAt = updatedAt;
-            deserializedUpdateResponse.assignedTo = assignedTo;
-            deserializedUpdateResponse.description = description;
-            deserializedUpdateResponse.completedAt = completedAt;
-            deserializedUpdateResponse.labels = labels;
+            CreateFormResponse deserializedCreateFormResponse = new CreateFormResponse(title, status);
+            deserializedCreateFormResponse.id = id;
+            deserializedCreateFormResponse.createdBy = createdBy;
+            deserializedCreateFormResponse.createdAt = createdAt;
+            deserializedCreateFormResponse.updatedAt = updatedAt;
+            deserializedCreateFormResponse.assignedTo = assignedTo;
+            deserializedCreateFormResponse.description = description;
+            deserializedCreateFormResponse.completedAt = completedAt;
+            deserializedCreateFormResponse.labels = labels;
 
-            return deserializedUpdateResponse;
+            return deserializedCreateFormResponse;
         });
     }
 }

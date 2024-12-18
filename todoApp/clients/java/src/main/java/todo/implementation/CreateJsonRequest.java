@@ -4,20 +4,20 @@ package todo.implementation;
 
 import io.clientcore.core.annotation.Metadata;
 import io.clientcore.core.annotation.TypeConditions;
-import io.clientcore.core.json.JsonReader;
-import io.clientcore.core.json.JsonSerializable;
-import io.clientcore.core.json.JsonToken;
-import io.clientcore.core.json.JsonWriter;
+import io.clientcore.core.serialization.json.JsonReader;
+import io.clientcore.core.serialization.json.JsonSerializable;
+import io.clientcore.core.serialization.json.JsonToken;
+import io.clientcore.core.serialization.json.JsonWriter;
 import io.clientcore.core.util.binarydata.BinaryData;
 import java.io.IOException;
 import java.util.List;
 import todo.TodoItem;
 
 /**
- * The CreateRequest model.
+ * The CreateJsonRequest model.
  */
 @Metadata(conditions = { TypeConditions.FLUENT })
-public final class CreateRequest implements JsonSerializable<CreateRequest> {
+public final class CreateJsonRequest implements JsonSerializable<CreateJsonRequest> {
     /*
      * The item property.
      */
@@ -31,12 +31,12 @@ public final class CreateRequest implements JsonSerializable<CreateRequest> {
     private List<BinaryData> attachments;
 
     /**
-     * Creates an instance of CreateRequest class.
+     * Creates an instance of CreateJsonRequest class.
      * 
      * @param item the item value to set.
      */
     @Metadata(generated = true)
-    public CreateRequest(TodoItem item) {
+    public CreateJsonRequest(TodoItem item) {
         this.item = item;
     }
 
@@ -64,10 +64,10 @@ public final class CreateRequest implements JsonSerializable<CreateRequest> {
      * Set the attachments property: The attachments property.
      * 
      * @param attachments the attachments value to set.
-     * @return the CreateRequest object itself.
+     * @return the CreateJsonRequest object itself.
      */
     @Metadata(generated = true)
-    public CreateRequest setAttachments(List<BinaryData> attachments) {
+    public CreateJsonRequest setAttachments(List<BinaryData> attachments) {
         this.attachments = attachments;
         return this;
     }
@@ -86,16 +86,16 @@ public final class CreateRequest implements JsonSerializable<CreateRequest> {
     }
 
     /**
-     * Reads an instance of CreateRequest from the JsonReader.
+     * Reads an instance of CreateJsonRequest from the JsonReader.
      * 
      * @param jsonReader The JsonReader being read.
-     * @return An instance of CreateRequest if the JsonReader was pointing to an instance of it, or null if it was
+     * @return An instance of CreateJsonRequest if the JsonReader was pointing to an instance of it, or null if it was
      * pointing to JSON null.
      * @throws IllegalStateException If the deserialized JSON object was missing any required properties.
-     * @throws IOException If an error occurs while reading the CreateRequest.
+     * @throws IOException If an error occurs while reading the CreateJsonRequest.
      */
     @Metadata(generated = true)
-    public static CreateRequest fromJson(JsonReader jsonReader) throws IOException {
+    public static CreateJsonRequest fromJson(JsonReader jsonReader) throws IOException {
         return jsonReader.readObject(reader -> {
             TodoItem item = null;
             List<BinaryData> attachments = null;
@@ -112,10 +112,10 @@ public final class CreateRequest implements JsonSerializable<CreateRequest> {
                     reader.skipChildren();
                 }
             }
-            CreateRequest deserializedCreateRequest = new CreateRequest(item);
-            deserializedCreateRequest.attachments = attachments;
+            CreateJsonRequest deserializedCreateJsonRequest = new CreateJsonRequest(item);
+            deserializedCreateJsonRequest.attachments = attachments;
 
-            return deserializedCreateRequest;
+            return deserializedCreateJsonRequest;
         });
     }
 }

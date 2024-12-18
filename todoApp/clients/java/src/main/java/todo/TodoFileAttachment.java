@@ -4,51 +4,53 @@ package todo;
 
 import io.clientcore.core.annotation.Metadata;
 import io.clientcore.core.annotation.TypeConditions;
-import io.clientcore.core.json.JsonReader;
-import io.clientcore.core.json.JsonSerializable;
-import io.clientcore.core.json.JsonToken;
-import io.clientcore.core.json.JsonWriter;
-import java.io.IOException;
+import io.clientcore.core.util.binarydata.BinaryData;
 
 /**
- * The TodoFileAttachment model.
+ * The file details for the "attachments" field.
  */
-@Metadata(conditions = { TypeConditions.IMMUTABLE })
-public final class TodoFileAttachment implements JsonSerializable<TodoFileAttachment> {
+@Metadata(conditions = { TypeConditions.FLUENT })
+public final class TodoFileAttachment {
     /*
-     * The file name of the attachment
+     * The content of the file.
      */
     @Metadata(generated = true)
-    private final String filename;
+    private final BinaryData content;
 
     /*
-     * The media type of the attachment
+     * The filename of the file.
      */
     @Metadata(generated = true)
-    private final String mediaType;
+    private String filename;
 
     /*
-     * The contents of the file
+     * The content-type of the file.
      */
     @Metadata(generated = true)
-    private final byte[] contents;
+    private String contentType = "application/octet-stream";
 
     /**
      * Creates an instance of TodoFileAttachment class.
      * 
-     * @param filename the filename value to set.
-     * @param mediaType the mediaType value to set.
-     * @param contents the contents value to set.
+     * @param content the content value to set.
      */
     @Metadata(generated = true)
-    public TodoFileAttachment(String filename, String mediaType, byte[] contents) {
-        this.filename = filename;
-        this.mediaType = mediaType;
-        this.contents = contents;
+    public TodoFileAttachment(BinaryData content) {
+        this.content = content;
     }
 
     /**
-     * Get the filename property: The file name of the attachment.
+     * Get the content property: The content of the file.
+     * 
+     * @return the content value.
+     */
+    @Metadata(generated = true)
+    public BinaryData getContent() {
+        return this.content;
+    }
+
+    /**
+     * Get the filename property: The filename of the file.
      * 
      * @return the filename value.
      */
@@ -58,68 +60,36 @@ public final class TodoFileAttachment implements JsonSerializable<TodoFileAttach
     }
 
     /**
-     * Get the mediaType property: The media type of the attachment.
+     * Set the filename property: The filename of the file.
      * 
-     * @return the mediaType value.
+     * @param filename the filename value to set.
+     * @return the TodoFileAttachment object itself.
      */
     @Metadata(generated = true)
-    public String getMediaType() {
-        return this.mediaType;
+    public TodoFileAttachment setFilename(String filename) {
+        this.filename = filename;
+        return this;
     }
 
     /**
-     * Get the contents property: The contents of the file.
+     * Get the contentType property: The content-type of the file.
      * 
-     * @return the contents value.
+     * @return the contentType value.
      */
     @Metadata(generated = true)
-    public byte[] getContents() {
-        return this.contents;
+    public String getContentType() {
+        return this.contentType;
     }
 
     /**
-     * {@inheritDoc}
-     */
-    @Metadata(generated = true)
-    @Override
-    public JsonWriter toJson(JsonWriter jsonWriter) throws IOException {
-        jsonWriter.writeStartObject();
-        jsonWriter.writeStringField("filename", this.filename);
-        jsonWriter.writeStringField("mediaType", this.mediaType);
-        jsonWriter.writeBinaryField("contents", this.contents);
-        return jsonWriter.writeEndObject();
-    }
-
-    /**
-     * Reads an instance of TodoFileAttachment from the JsonReader.
+     * Set the contentType property: The content-type of the file.
      * 
-     * @param jsonReader The JsonReader being read.
-     * @return An instance of TodoFileAttachment if the JsonReader was pointing to an instance of it, or null if it was
-     * pointing to JSON null.
-     * @throws IllegalStateException If the deserialized JSON object was missing any required properties.
-     * @throws IOException If an error occurs while reading the TodoFileAttachment.
+     * @param contentType the contentType value to set.
+     * @return the TodoFileAttachment object itself.
      */
     @Metadata(generated = true)
-    public static TodoFileAttachment fromJson(JsonReader jsonReader) throws IOException {
-        return jsonReader.readObject(reader -> {
-            String filename = null;
-            String mediaType = null;
-            byte[] contents = null;
-            while (reader.nextToken() != JsonToken.END_OBJECT) {
-                String fieldName = reader.getFieldName();
-                reader.nextToken();
-
-                if ("filename".equals(fieldName)) {
-                    filename = reader.getString();
-                } else if ("mediaType".equals(fieldName)) {
-                    mediaType = reader.getString();
-                } else if ("contents".equals(fieldName)) {
-                    contents = reader.getBinary();
-                } else {
-                    reader.skipChildren();
-                }
-            }
-            return new TodoFileAttachment(filename, mediaType, contents);
-        });
+    public TodoFileAttachment setContentType(String contentType) {
+        this.contentType = contentType;
+        return this;
     }
 }
